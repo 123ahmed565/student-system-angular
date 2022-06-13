@@ -1,0 +1,172 @@
+
+
+          <div class="container mt-10">
+
+            <div class="flex items-center justify-between">
+              <h1 class="text-xl capitalize font-bold">student system</h1>
+
+                    <!-- start button modal add new product -->
+                    <a x-data="{ open: false }">
+                      <button x-on:click="open = true" class="capitalize bg-[#ffd5cc] font-bold p-3 rounded-xl hover:shadow-xl">Add new student</button>
+                      <!-- Modal product -->
+                      <div x-show="open" x-on:keydown.escape.prevent.stop="open = false" role="dialog"
+                      aria-modal="true" x-id="['modal-title']" :aria-labelledby="$id('modal-title')"
+                      class="fixed inset-0 overflow-y-auto">
+                      <!-- Overlay -->
+                      <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-50"></div>
+
+                      <!-- Panel -->
+                      <div x-show="open" x-transition x-on:click="open = false"
+                          class="relative min-h-screen flex items-center justify-center p-2 md:p-4">
+                          <div x-on:click.stop x-trap.noscroll.inert="open"
+                              class="relative max-w-sm w-full bg-white p-4 overflow-y-auto rounded-xl">
+                              <!-- Title -->
+                              <div class="flex items-center justify-between">
+                                  <h2 class="text-2xl font-medium capitalize w-full" :id="$id('modal-title')">add new student</h2>
+                                  <svg x-on:click="open = false" xmlns="http://www.w3.org/2000/svg" width="25"
+                                      height="25" fill="white"
+                                      class="bi bi-x ltr:ml-auto rtl:mr-auto cursor-pointer bg-mainColor w-6 rounded-full" viewBox="0 0 16 16">
+                                      <path
+                                          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                  </svg>
+                              </div>
+                              <!-- Content -->
+                              <div class="mt-5">
+                                <form class="space-y-4" #form="ngForm" (ngSubmit)="post(form)">
+                                  <input  name="name" ngModel type="text" class="p-2 bg-gray-200 text-sm capitalize focus:outline-none rounded-xl w-full h-10" placeholder="name">
+                                  <input  name="age"  ngModel type="number" class="p-2 bg-gray-200 text-sm capitalize focus:outline-none rounded-xl w-full h-10" placeholder="age">
+                                  <input  name="degree" ngModel type="text" class="p-2 bg-gray-200 text-sm capitalize focus:outline-none rounded-xl w-full h-10" placeholder="degree">
+                                  <button type="submit" class="bg-[#ffd5cc] p-2 capitalize rounded-xl mx-auto font-bold">save</button>
+                                </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                    </a>
+            </div>
+
+
+            <!-- table pc only -->
+              <div class="flex flex-col mt-4" >
+                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                        <div class="overflow-hidden border-b border-gray-200 rounded-md shadow-md">
+                            <table class="min-w-full divide-y divide-[#ffd5cc]">
+                                <thead class="bg-[#ffd5cc]">
+                                    <tr>
+                                        <th scope="col"
+                                            class="px-6 py-3 capitalize text-xs font-semibold tracking-wider text-left text-black uppercase">
+                                            id
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 capitalize text-xs font-semibold tracking-wider text-left text-black uppercase">
+                                            name
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 capitalize text-xs font-semibold tracking-wider text-left text-black uppercase">
+                                            age
+                                        </th>
+                                        <th scope="col"
+                                        class="px-6 py-3 capitalize text-xs font-semibold tracking-wider text-left text-black uppercase">
+                                            department
+                                        </th>
+                                        <th scope="col"
+                                        class="px-6 py-3 capitalize text-xs font-semibold tracking-wider text-left text-black uppercase">
+                                            degree
+                                        </th>
+                                        <th scope="col"
+                                        class="px-6 py-3 capitalize text-xs font-semibold tracking-wider text-left text-black uppercase">
+                                            reaction
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-[#ffd5cc]">
+                                    <tr *ngFor="let item of user; index as i" class="transition-all hover:bg-gray-100 hover:shadow-lg cursor-pointer">
+                                            <!-- first col id-->
+                                            <td class="px-10 py-4 text-xs">
+                                              {{i+1}}
+                                            </td>
+
+                                            <!-- second col client name -->
+                                            <td class="px-6 py-4 text-sm">
+                                              {{item.name}}
+                                            </td>
+
+                                            <!-- third col mobile phone-->
+                                            <td class="px-6 py-4 text-xs">
+                                              {{item.age}}
+                                            </td>
+
+                                            <!-- fifth col no.bill-->
+                                            <td class="px-6 py-4 text-xs font-medium text-gray-400">
+                                                <select class="bg-gray-200 rounded-xl p-1 text-xs text-black focus:outline-none">
+                                                  <option value="">Arabic</option>
+                                                  <option value="">English</option>
+                                                </select>
+                                            </td>
+
+                                            <!-- sixth col all peices-->
+                                            <td
+                                            class="px-6 py-4 text-xs text-gray-400 font-medium">
+                                            {{item.degree}}
+                                            </td>
+
+                                            <!-- eight col more option-->
+                                            <td class="px-6 py-4 text-sm font-medium">
+                                              <div class="md:space-x-3 rtl:space-x-reverse">
+                                                <!-- start button modal add product -->
+                                                <a x-data="{ open: false }">
+                                                  <button  x-on:click="open = true" class="bg-blue-400 w-6 h-6 rounded md:hover:animate-bounce">
+                                                    <i class="fas fa-edit text-white text-sm"></i>
+                                                  </button>
+                                                  <!-- Modal product -->
+                                                  <div x-show="open" x-on:keydown.escape.prevent.stop="open = false" role="dialog"
+                                                  aria-modal="true" x-id="['modal-title']" :aria-labelledby="$id('modal-title')"
+                                                  class="fixed inset-0 overflow-y-auto">
+                                                  <!-- Overlay -->
+                                                  <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-50"></div>
+
+                                                  <!-- Panel -->
+                                                  <div x-show="open" x-transition x-on:click="open = false"
+                                                      class="relative min-h-screen flex items-center justify-center p-2 md:p-4">
+                                                      <div x-on:click.stop x-trap.noscroll.inert="open"
+                                                          class="relative max-w-sm w-full bg-white p-4 overflow-y-auto rounded-xl">
+                                                          <!-- Title -->
+                                                          <div class="flex items-center justify-between">
+                                                              <h2 class="text-2xl font-medium capitalize w-full" :id="$id('modal-title')">add new student</h2>
+                                                              <svg x-on:click="open = false" xmlns="http://www.w3.org/2000/svg" width="25"
+                                                                  height="25" fill="white"
+                                                                  class="bi bi-x ltr:ml-auto rtl:mr-auto cursor-pointer bg-mainColor w-6 rounded-full" viewBox="0 0 16 16">
+                                                                  <path
+                                                                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                                              </svg>
+                                                          </div>
+                                                          <!-- Content -->
+                                                          <div class="mt-5">
+                                                            <form class="space-y-4" #form="ngForm" (ngSubmit)="edit(item,form)">
+                                                              <input  name="name" ngModel type="text" class="p-2 bg-gray-200 text-sm capitalize focus:outline-none rounded-xl w-full h-10" placeholder="name">
+                                                              <input  name="age"  ngModel type="number" class="p-2 bg-gray-200 text-sm capitalize focus:outline-none rounded-xl w-full h-10" placeholder="age">
+                                                              <input  name="degree" ngModel type="text" class="p-2 bg-gray-200 text-sm capitalize focus:outline-none rounded-xl w-full h-10" placeholder="degree">
+                                                              <button type="submit" class="bg-[#ffd5cc] p-2 capitalize rounded-xl mx-auto font-bold">save</button>
+                                                            </form>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                                </a>
+
+
+
+                                                <button (click)="delete(item.id)"  class="bg-red-500 w-6 h-6 rounded md:hover:animate-bounce">
+                                                  <i class="fas fa-trash text-white text-sm"></i>
+                                                </button>
+                                              </div>
+                                            </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>

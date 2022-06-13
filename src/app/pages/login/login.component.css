@@ -1,0 +1,8 @@
+
+/* start login page */
+@media (max-width:768px) {
+  .bgLogin{
+      background-image: url("../../../assets/images/login/bg-mobile.png") !important;
+      height: 100vh !important;
+  }
+}

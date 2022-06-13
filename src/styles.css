@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@200;300;400;500;600;700&family=Roboto+Condensed:wght@400;700&family=Roboto:wght@300;400;500;700;900&family=Saira:wght@300;400;500;600;700;800;900&display=swap');
+
+
+body{
+  font-family: 'Cairo', sans-serif;
+  overflow-x: hidden;
+}
+
+
+::-webkit-scrollbar{
+  width: 9px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(#cc4a2c, white);
+  border-radius: 8px;
+}
+
+.dateBillSale::-webkit-scrollbar {
+  display: none;
+}
+
+.dateBillSale{
+  -ms-overflow-style: none ;
+  scrollbar-width: none;
+}

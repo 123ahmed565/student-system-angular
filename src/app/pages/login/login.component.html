@@ -1,0 +1,38 @@
+    <!-- start login page -->
+    <div class="bgLogin w-full bg-center bg-cover h-[39rem] md:overflow-hidden"
+        style="background-image: url(../../../assets/images/login/loignBg.png);">
+
+            <div class="container">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 md:space-x-24 rtl:space-x-reverse">
+
+                    <div class="col-span-1">
+                        <img loading="lazy"class="block w-60 md:w-96 mx-auto mt-10 md:mt-36" src="assets/images/login/loginImage.svg"
+                            alt="image login">
+                    </div>
+
+                    <div class="col-span-1">
+                        <h2 class="capitalize text-black font-bold text-xl mt-16 md:mt-36 text-[40px]">
+                            <span class="text-[#ff440f]">welcome</span>
+                            back!
+                        </h2>
+                        <p class="border-b-4 border-[#ff440f] w-28 mt-2 rounded"></p>
+                        <div class="mt-10 mb-10">
+                            <form class="space-y-6">
+                                <input id="inputUser" #user required
+                                    class="bg-gray-200 font-semibold appearance-none rounded w-full md:w-96 py-2 px-4 text-gray-700 leading-tight focus:outline-none"
+                                    type="email" placeholder="Your Email">
+                                <input id="inputPassword" #password required
+                                    class="bg-gray-200 font-semibold appearance-none rounded w-full md:w-96 py-2 px-4 text-gray-700 leading-tight focus:outline-none"
+                                    type="password" placeholder="Your Password">
+                                    <input (click)="login()"
+                                        class="bg-[#ff440f] mt-5 w-full md:w-96 rounded cursor-pointer py-2 px-4 text-white font-semibold hover:bg-black transition duration-150 ease-in-out"
+                                        type="submit">
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+    <!-- end login page -->
