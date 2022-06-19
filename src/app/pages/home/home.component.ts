@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChange} from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChange , ViewChild, ElementRef} from '@angular/core';
 import { window } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
@@ -35,6 +35,13 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+
+
+
+  @ViewChild('closeModal') closeModal: ElementRef|null=null
+
+
+//add data
   post(form:any){
     console.log(form.value);
     let message  = form.value;
@@ -49,11 +56,16 @@ export class HomeComponent implements OnInit {
     this.apiService.postNewAccount(data).subscribe(
       ()=> {
       alert(`done`);
+      if(this.closeModal){
+        this.closeModal.nativeElement.click()
+      }
       },
       (err) => console.log(err)
       );
-      location.reload();
-  }
+    }
+
+
+// edit data
   edit(user:any,form:any){
     console.log(form.value);
     let message  = form.value;
@@ -91,7 +103,7 @@ export class HomeComponent implements OnInit {
 
 
 
-
+// delete data
   delete(id:any) {
     console.log(id);
 
@@ -99,8 +111,7 @@ export class HomeComponent implements OnInit {
       ()=> {alert(`deleted`); },
       (err) => console.log(err)
     );
-    // location.reload();
-
+    location.reload();
   }
 
 
