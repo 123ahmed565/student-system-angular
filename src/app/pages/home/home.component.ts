@@ -47,10 +47,12 @@ export class HomeComponent implements OnInit {
     };
 
     this.apiService.postNewAccount(data).subscribe(
-      ()=> {alert(`done`); },
+      ()=> {
+      alert(`done`);
+      },
       (err) => console.log(err)
-    );
-    location.reload();
+      );
+      location.reload();
   }
   edit(user:any,form:any){
     console.log(form.value);
@@ -97,8 +99,10 @@ export class HomeComponent implements OnInit {
       ()=> {alert(`deleted`); },
       (err) => console.log(err)
     );
-    location.reload();
+    // location.reload();
 
   }
+
+
 
 }
